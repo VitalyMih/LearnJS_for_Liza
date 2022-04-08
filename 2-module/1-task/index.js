@@ -1,0 +1,2 @@
+function sumSalary(salaries) {
+}
