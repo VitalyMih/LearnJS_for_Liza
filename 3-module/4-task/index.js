@@ -1,0 +1,2 @@
+function showSalary(users, age) {
+}

@@ -1,0 +1,2 @@
+function camelize(str) {
+}
