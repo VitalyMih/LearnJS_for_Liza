@@ -1,2 +1,2 @@
-function namify(users) {
-}
+const namify = (users) => users.map(item => item.name)
+
