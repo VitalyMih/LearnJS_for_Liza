@@ -1,0 +1,2 @@
+function makeFriendsList(friends) {
+}

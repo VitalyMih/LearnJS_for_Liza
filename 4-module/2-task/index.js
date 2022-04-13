@@ -1,0 +1,2 @@
+function makeDiagonalRed(table) {
+}
