@@ -35,12 +35,12 @@
   </main>
 
   <script type="module">
-    import Cart from './index.js';
-    import CartIcon from '../1-task/index.js';
+    import Cart from './index.js'
+    import CartIcon from '../1-task/index.js'
 
-    let cartIcon = new CartIcon();
-    let cartIconHolder = document.querySelector('[data-cart-icon-holder]');
-    cartIconHolder.append(cartIcon.elem);
+    let cartIcon = new CartIcon()
+    let cartIconHolder = document.querySelector('[data-cart-icon-holder]')
+    cartIconHolder.append(cartIcon.elem)
 
     let products = [
       {
@@ -69,19 +69,19 @@
       },
     ]
 
-    let cart = new Cart(cartIcon);
+    let cart = new Cart(cartIcon)
 
     document.addEventListener('click', (event) => {
-      let button = event.target.closest('.button');
+      let button = event.target.closest('.button')
       if (!button) {
-        return;
+        return
       }
 
-      let addProductId = button.dataset.addProductId;
-      let productToAdd = products.find((product) => product.id === addProductId);
+      let addProductId = button.dataset.addProductId
+      let productToAdd = products.find((product) => product.id === addProductId)
 
       if (productToAdd) {
-        cart.addProduct(productToAdd);
+        cart.addProduct(productToAdd)
       }
     })
   </script>

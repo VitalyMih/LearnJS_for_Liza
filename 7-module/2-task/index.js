@@ -54,8 +54,9 @@ export default class Modal {
     _closeByButton() {
         this._modal.addEventListener('click', (event) => {
             const button = event.target.closest('button')
-            button && this.close()
-        }, {once: true})
+            if (!button) return
+            button.classList.contains('modal__close') && this.close()
+        })
     }
 
     _closeByEsc() {
