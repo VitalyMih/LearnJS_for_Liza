@@ -61,7 +61,6 @@
 
     let cartIconHolder = document.querySelector('[data-cart-icon-holder]')
     cartIconHolder.append(cartIcon.elem)
-    console.log(cartIcon)
 
     let products = [
       {
@@ -103,7 +102,7 @@
         let productToAdd = products.find((product) => product.id === addProductId)
         cart.addProduct(productToAdd)
 
-        return;
+        return
       }
 
       if (button.dataset.increaseCountProductId) {

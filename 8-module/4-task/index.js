@@ -14,8 +14,9 @@ export default class Cart {
 
     addProduct(product) {
         if (!product) return
+        const noProduct = this.cartItems.every(cartItem => cartItem.product.name !== product.name)
 
-        if (this.cartItems.every(cartItem => cartItem.product.name !== product.name)) {
+        if (noProduct) {
             this.cartItems.push({ product, count: 1 })
             this.onProductUpdate({ product, count: 1 })
         } else {
@@ -42,19 +43,15 @@ export default class Cart {
     }
 
     isEmpty() {
-        return this.cartItems.length === 0
+        return !this.cartItems.length
     }
 
     getTotalCount() {
-        return this.cartItems.reduce((previousValue, cartItem) => {
-            return previousValue + cartItem.count
-        }, 0)
+        return this.cartItems.reduce((sum, item) => sum + item.count, 0)
     }
 
     getTotalPrice() {
-        return this.cartItems.reduce((previousValue, cartItem) => {
-            return previousValue + cartItem.count * cartItem.product.price
-        }, 0)
+        return this.cartItems.reduce((sum, item) => sum + item.count * item.product.price, 0)
     }
 
     renderProduct(product, count) {
@@ -203,3 +200,4 @@ export default class Cart {
         this.cartIcon.elem.onclick = () => this.renderModal()
     }
 }
+

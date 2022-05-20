@@ -12,8 +12,8 @@ function productGridTemplate() {
 
 export default class ProductGrid {
     constructor(products) {
-        this.products = products
-        this.filters = {}
+        this._products = products
+        this._filters = {}
         this.elem = createElement(productGridTemplate())
 
         this._createCards()
@@ -23,12 +23,12 @@ export default class ProductGrid {
         const cardsContainer = this.elem.querySelector('.products-grid__inner')
         cardsContainer.innerHTML = ''
 
-         for (let product of this.products) {
+         for (let product of this._products) {
 
-             if (this.filters.noNuts && product.nuts) continue
-             if (this.filters.vegeterianOnly && !product.vegeterian) continue
-             if (product.spiciness > this.filters.maxSpiciness && !!this.filters.maxSpiciness) continue
-             if (this.filters.category !== product.category && !!this.filters.category && !!product.category) continue
+             if (this._filters.noNuts && product.nuts) continue
+             if (this._filters.vegeterianOnly && !product.vegeterian) continue
+             if (product.spiciness > this._filters.maxSpiciness && !!this._filters.maxSpiciness) continue
+             if (this._filters.category !== product.category && !!this._filters.category && !!product.category) continue
 
              const card = new ProductCard(product)
              cardsContainer.append(card.elem)
@@ -36,9 +36,8 @@ export default class ProductGrid {
     }
 
     updateFilter(filters) {
-        Object.assign(this.filters, filters)
+        Object.assign(this._filters, filters)
         this._createCards()
     }
 }
-
 
