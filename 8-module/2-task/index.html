@@ -53,40 +53,40 @@
   <div class="container" id="container"></div>
 
   <script type="module">
-    import ProductGrid from './index.js';
-    import products from './products.js';
+    import ProductGrid from './index.js'
+    import products from './products.js'
 
-    let productGrid = new ProductGrid(products);
+    let productGrid = new ProductGrid(products)
 
-    container.append(productGrid.elem);
+    container.append(productGrid.elem)
 
-    let noNutsControl = document.querySelector('[data-no-nuts]');
+    let noNutsControl = document.querySelector('[data-no-nuts]')
     noNutsControl.addEventListener('change', () => {
-      productGrid.updateFilter({ noNuts: event.target.checked });
-    });
+      productGrid.updateFilter({ noNuts: event.target.checked })
+    })
 
-    let vegetarianOnlyControl = document.querySelector('[data-vegetarian-only]');
+    let vegetarianOnlyControl = document.querySelector('[data-vegetarian-only]')
     vegetarianOnlyControl.addEventListener('change', () => {
-      productGrid.updateFilter({ vegeterianOnly: event.target.checked });
-    });
+      productGrid.updateFilter({ vegeterianOnly: event.target.checked })
+    })
 
-    let maxSpicinessControl = document.querySelector('[data-max-spiciness]');
+    let maxSpicinessControl = document.querySelector('[data-max-spiciness]')
     maxSpicinessControl.addEventListener('change', () => {
       if (event.target.checked) {
-        productGrid.updateFilter({ maxSpiciness: 2 });
+        productGrid.updateFilter({ maxSpiciness: 2 })
       } else {
-        productGrid.updateFilter({ maxSpiciness: 4 });
+        productGrid.updateFilter({ maxSpiciness: 4 })
       }
-    });
+    })
 
-    let categoryControl = document.querySelector('[data-category]');
+    let categoryControl = document.querySelector('[data-category]')
     categoryControl.addEventListener('change', () => {
       if (event.target.checked) {
-        productGrid.updateFilter({ category: 'soups' });
+        productGrid.updateFilter({ category: 'soups' })
       } else {
-        productGrid.updateFilter({ category: '' });
+        productGrid.updateFilter({ category: '' })
       }
-    });
+    })
 
   </script>
 </body>
