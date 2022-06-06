@@ -154,7 +154,9 @@ export default class Cart {
             productPrice.innerHTML = `€${(cartItem.product.price * cartItem.count).toFixed(2)}`
             infoPrice.innerHTML = `€${this.getTotalPrice().toFixed(2)}`
 
-            if (!this.getTotalPrice()) {
+            if (cartItem.count === 0 && this.cartItems.length !== 0) {
+                document.body.querySelector(`[data-product-id=${cartItem.product.id}]`).remove()
+            } else if (this.cartItems.length === 0) {
                 document.body.querySelector('.container').remove()
                 document.body.classList.remove('is-modal-open')
             }
