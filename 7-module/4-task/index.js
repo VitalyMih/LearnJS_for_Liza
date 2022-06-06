@@ -1,12 +1,12 @@
 import createElement from '../../assets/lib/create-element.js'
 
-function stepSliderTemplate(num) {
+function stepSliderTemplate(num, steps) {
     return `
         <div class="slider">
-            <div class="slider__thumb">
+            <div class="slider__thumb" style="left: ${num / (steps - 1) * 100}%;">
                 <span class="slider__value">${num}</span>
             </div>
-            <div class="slider__progress" style="width: 0;"></div>
+            <div class="slider__progress" style="width: ${num / (steps - 1) * 100}%;"></div>
             <div class="slider__steps"></div>
         </div>
     `
@@ -111,14 +111,15 @@ export default class StepSlider {
     }
 
     get _slider() {
-        const slider = createElement(stepSliderTemplate(this._value))
+        const slider = createElement(stepSliderTemplate(this._value, this._steps))
         const steps = slider.querySelector('.slider__steps')
 
         for (let i = 0; i < this._steps; i++) {
             steps.insertAdjacentHTML('beforeend', `<span></span>`)
+            if (i === this._value) {
+                steps.lastChild.classList.add('slider__step-active')
+            }
         }
-
-        steps.querySelector('span').classList.add('slider__step-active')
 
         return slider
     }

@@ -27,7 +27,7 @@ export default class ProductGrid {
 
              if (this._filters.noNuts && product.nuts) continue
              if (this._filters.vegeterianOnly && !product.vegeterian) continue
-             if (product.spiciness > this._filters.maxSpiciness && !!this._filters.maxSpiciness) continue
+             if (product.spiciness > this._filters.maxSpiciness) continue
              if (this._filters.category !== product.category && !!this._filters.category && !!product.category) continue
 
              const card = new ProductCard(product)
